@@ -19,7 +19,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 public class BugtrackingApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(BugtrackingApplication.class, args);
+		SpringApplication.run(BugtrackingApplication.class);
 	}
 
 	@Bean
