@@ -66,9 +66,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
 
 	@Override
 	public List<EmployeeDto> getAllEmployees() {
-		List<EmployeeDto> empDto = EmployeeMapper.toEmployeeDtoList(er.findAll());
-		return empDto;
-
+		return EmployeeMapper.toEmployeeDtoList(er.findAll());
 	}
 
 }
