@@ -24,8 +24,7 @@ public class EmployeeConsumer {
 	@GetMapping("/employees/bystatus/{bugStatus}")
 	public List<BugDto> bugsbystatus(@PathVariable("bugStatus") String bugStatus) {
 		String endpointEmpBug = "http://localhost:8055/bugs/bystatus/" + bugStatus;
-		List<BugDto> m = Arrays.asList(rt.getForObject(endpointEmpBug, BugDto[].class));
-		return m;
+		return Arrays.asList(rt.getForObject(endpointEmpBug, BugDto[].class));
 	}
 
 	@ApiOperation("Used to create bug(BY EMPLOYEE)")

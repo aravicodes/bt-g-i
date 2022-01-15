@@ -25,27 +25,35 @@ public class BugServiceImpl implements IBugService {
 
 	@Override
 	public List<BugDto> getall() {
-		List<BugDto> bugDto = BugMapper.toBugDtoList(br.findAll());
-		return bugDto;
+		return BugMapper.toBugDtoList(br.findAll());
 	}
 
 	@Override
 	public BugDto getbug(long bugId) {
 		Optional<Bug> bug = br.findById(bugId);
-		if (bug.isPresent())
+		if (bug.isPresent()) {
 			return BugMapper.toBugDto(bug.get());
-		else
+		}
+
+		else {
 			throw new IdNotFoundException("id not found");
+		}
+
 	}
 
 	@Override
 	public BugDto deletebug(long bugId) {
-		if (br.existsById(bugId)) {
+		if (br.existsById(bugId)) 
+		{
 			BugDto bugDto = BugMapper.toBugDto(br.getById(bugId));
 			br.deleteById(bugId);
 			return bugDto;
-		} else
+		} 
+		else 
+		{
 			throw new IdNotFoundException("id not found");
+		}
+
 	}
 
 	@Override

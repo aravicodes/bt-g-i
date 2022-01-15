@@ -16,8 +16,8 @@ import com.bugtracking.dto.EmployeeDto;
 
 @Service("es")
 @Transactional
-public class EmployeeServiceImpl implements IEmployeeService{
-	
+public class EmployeeServiceImpl implements IEmployeeService {
+
 	@Autowired
 	IEmployeeRepository er;
 
@@ -29,17 +29,14 @@ public class EmployeeServiceImpl implements IEmployeeService{
 	}
 
 	@Override
-	public EmployeeDto updateEmployee(long empId,EmployeeDto e) {
-		// TODO Auto-generated method stub
-		if(er.existsById(empId)) {
+	public EmployeeDto updateEmployee(long empId, EmployeeDto e) {
+		if (er.existsById(empId)) {
 			Employee empObj = EmployeeMapper.toEmployee(e);
-			//System.out.println(empObj.());
 			Employee emp = er.save(empObj);
 			return EmployeeMapper.toEmployeeDto(emp);
-			}
-			else {
-				throw new IdNotFoundException("Provided id is not there");
-			}
+		} else {
+			throw new IdNotFoundException("Provided id is not there");
+		}
 	}
 
 	@Override
@@ -48,18 +45,22 @@ public class EmployeeServiceImpl implements IEmployeeService{
 			EmployeeDto empDto = EmployeeMapper.toEmployeeDto(er.getById(empId));
 			er.deleteById(empId);
 			return empDto;
-		} else
+		} else {
 			throw new IdNotFoundException("id not found");
+		}
+
 	}
 
 	@Override
 	public EmployeeDto getEmployee(long empId) {
-		// TODO Auto-generated method stub
 		Optional<Employee> emp = er.findById(empId);
-		if (emp.isPresent())
+		if (emp.isPresent()) {
 			return EmployeeMapper.toEmployeeDto(emp.get());
-		else
+		}
+
+		else {
 			throw new IdNotFoundException("id not found");
+		}
 
 	}
 
@@ -67,7 +68,7 @@ public class EmployeeServiceImpl implements IEmployeeService{
 	public List<EmployeeDto> getAllEmployees() {
 		List<EmployeeDto> empDto = EmployeeMapper.toEmployeeDtoList(er.findAll());
 		return empDto;
-	
+
 	}
 
 }

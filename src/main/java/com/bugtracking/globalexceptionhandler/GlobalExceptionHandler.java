@@ -20,7 +20,7 @@ public class GlobalExceptionHandler {
 		ri.setUri(req.getRequestURI());
 		ri.setStatusCode(HttpStatus.NOT_FOUND.value());
 		ri.setStatusName(HttpStatus.NOT_FOUND);
-		return new ResponseEntity<Responseinfo>(ri, HttpStatus.NOT_FOUND);
+		return new ResponseEntity<>(ri, HttpStatus.NOT_FOUND);
 	}
 
 	@ExceptionHandler(MethodArgumentNotValidException.class)

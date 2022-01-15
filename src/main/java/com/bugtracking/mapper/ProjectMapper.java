@@ -22,7 +22,7 @@ public class ProjectMapper {
 		projectDto.setProjId(project.getProjId());
 		projectDto.setProjName(project.getProjname());
 		projectDto.setProjStatus(project.getProjstatus());
-		projectDto.setMembers(project.getMembers());;
+		projectDto.setMembers(project.getMembers());
 		return projectDto;
 	}
 	
